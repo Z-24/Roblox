@@ -19,8 +19,8 @@ local Cell = require(script.cell)
 local Config = require(script.config)
 
 -- Constants
-local MapSizeX = Config.MapSize[1]
-local MapSizeY = Config.MapSize[2]
+local MAP_SIZE_X = Config.MapSize[1]
+local MAP_SIZE_Y = Config.MapSize[2]
 
 -- Control Variables
 local Pandemic = false
@@ -105,13 +105,13 @@ function CellularAutomata:Setup()
         (X, Y, Z) plane to (Y, X) grid space and creating
         a physical plane.
     ]]
-    self.Board = Matrices.new(MapSizeY, MapSizeX)
+    self.Board = Matrices.new(MAP_SIZE_Y, MAP_SIZE_X)
     for Row, Column, _ in self.Board:Iterate() do
         --[[
             Here we are constructing a new cell object, that
             controls and mimics the behaviour of a cell
         ]]
-        self.Board[Row][Column] = Cell.new(MapSizeX, MapSizeY, Row, Column)
+        self.Board[Row][Column] = Cell.new(MAP_SIZE_X, MAP_SIZE_Y, Row, Column)
     end
 end
 
@@ -164,7 +164,7 @@ function CellularAutomata:StartSimulation()
                 looking for cells to infect. 
             ]]
             for _, Count in pairs(GetLivingCellCount(self.Board)) do
-                if Count == (MapSizeY * MapSizeX) then
+                if Count == (MAP_SIZE_Y * MAP_SIZE_X) then
                     Pandemic = true
                 end
             end
