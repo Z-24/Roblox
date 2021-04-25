@@ -24,6 +24,7 @@ local function CreateNode(Ratio, PositionX, PositionY)
     Node.Anchored = true
     Node.TopSurface = Enum.SurfaceType.Smooth
     Node.Parent = workspace:WaitForChild("Nodes")
+    return Node
 end
 
 function Cell.new(BoardSizeX: number, BoardSizeY: number, PositionX: number, PositionY: number)
